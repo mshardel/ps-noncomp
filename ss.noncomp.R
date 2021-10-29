@@ -72,17 +72,19 @@ ss.noncomp <- function (mu.c0 = NULL, mu.c1 = NULL, mu.n=mu.c0, mu.a=mu.c1,
     N0 <- (Za*sqrt(V01 + V11/ss.ratio) + Zb*sqrt(V01 + V11/ss.ratio))^2 / delta.star^2
   }
   else if (refinement == "Normal") {
-    N0.start <- floor(((V0 + V1/ss.ratio) * (Za + Zb)^2)/((1 - 
-                                                             rho.a - rho.n) * delta - deltaB)^2)
-    rootfunc1 <- function(n0, alpha = sig.level/tside, v0 = V00, 
-                          v1 = V11, r = ss.ratio, nominal.power = power, Delta.star.minus.deltaB = delta.star) {
+    ## starting value is value if no refinement
+    N0.start <- floor(((V01 + V11/ss.ratio) * (Za + Zb)^2)/((1 - 
+                                                               rho.a - rho.n) *delta)^2)
+    rootfunc1 <- function(n0, alpha = sig.level/tside, v0 = V01, 
+                          v1 = V11, r = ss.ratio, nominal.power = power, Delta.star = delta.star) {
       n0 <- ceiling(n0)
       n1 <- ceiling(n0 * r)
       tau.sq <- (v0/n0 + v1/n1)
+      ## satterthwaite approximation 
       nu <- ((tau.sq)^2)/(v0^2/((n0 - 1) * n0^2) + v1^2/((n1 - 
                                                             1) * n1^2))
       nu[nu < 1] <- 1
-      ncp <- Delta.star.minus.deltaB/sqrt(tau.sq)
+      ncp <- Delta.star/sqrt(tau.sq)
       POWER <- 1 - pt(qt(1 - alpha, nu), nu, ncp)
       nominal.power - POWER
     }
