@@ -49,7 +49,7 @@ ss.noncomp <- function (mu.c0 = NULL, mu.c1 = NULL, mu.n=mu.c0, mu.a=mu.c1,
                            "0", sep = "")
   }
   else if (delta.star < 0) {
-    delta.sta <- abs(delta.star)
+    delta.star <- abs(delta.star)
     if (tside == 1) 
       alternative <- paste(alternative, ", delta < ", 
                            "0", sep = "")
