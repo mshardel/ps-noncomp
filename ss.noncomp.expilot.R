@@ -2,7 +2,7 @@
 # Date: 05/12/2010
 # Author: Michelle Shardell, PhD
 # This program is a function for sample size calculation for continuous outcome data
-# using external pilot data using methods (Equation 5) described in 
+# with external pilot data using methods (Web Appendix Equation 2) described in:  
 #
 #  Shardell MD, El-Kamary SS. Calculating sample size for studies with expected 
 #     all-or-none nonadherence and selection bias. Biometrics. 2009 Jun;65(2):635-9. 
@@ -62,7 +62,7 @@ ss.noncomp.expilot <- function (delta = NULL, sigma.0p.sq = NULL, sigma.1p.sq = 
   ta <- qt(1 - sig.level/tside, nu.p)
   tb <- qt(power, nu.p)
   
-  N0 <- (ta + tb)^2 * (sigma.0p.sq + sigma.1p.sq/ss.ratio) / delta.star^2
+  N0 <- (ta + tb)^2 * (sigma.0p.sq + sigma.1p.sq/ss.ratio) / delta.star^2 + 1
   
   
   output <- list(n0 = ceiling(N0), n1 = ceiling(ss.ratio * 
