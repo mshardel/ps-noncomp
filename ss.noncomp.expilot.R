@@ -42,7 +42,7 @@ ss.noncomp.expilot <- function (delta = NULL, sigma.0p.sq = NULL, sigma.1p.sq = 
                            "0", sep = "")
   }
   else if (delta.star < 0) {
-    delta.sta <- abs(delta.star)
+    delta.star <- abs(delta.star)
     if (tside == 1) 
       alternative <- paste(alternative, ", delta < ", 
                            "0", sep = "")
