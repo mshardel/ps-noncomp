@@ -30,7 +30,7 @@ ss.noncomp.inpilot <- function (delta = NULL, sigma.0p.sq = NULL, sigma.1p.sq = 
   tside <- switch(alternative, one.sided = 1, two.sided = 2)
   
   NOTE <- " n0 is number in *control* group (internal pilot plus second segment) \n\tn1 is number in *treatment* group (internal pilot plus second segment)"
-  METHOD <- "Two-sample difference in means sample size with all-or-none non-compliance using external pilot data"
+  METHOD <- "Two-sample difference in means sample size with all-or-none non-compliance using internal pilot data"
   if (is.null(delta) | is.null(sigma.0p.sq) | is.null(rho.cp) | is.null(n0.p) | is.null(n0.s.min)) {
     stop("give values for 'delta.p' and 'sigma.0p.sq' and 'rho.cp' and 'no.p' and 'n0.s.min'")
   }
