@@ -1,5 +1,8 @@
+Tutorial on using functions to compute sample size for studies with expected all-or-none non-compliance and selection bias
+==========================================================================================================================
+
 Setting up
-==========
+----------
 
 First, source the code for the three functions used in this tutorial.
 The function ss.noncomp() is used to compute sample size without pilot
@@ -15,7 +18,7 @@ These function will be demonstrated for the scenarios listed in Table 1
 of Shardell and El-Kamary (2009).
 
 Computing sample size *without* pilot data
-==========================================
+------------------------------------------
 
 The function ss.noncomp() takes as arguments the means and variances by
 compliance group (compliers, always takers, and never takers). For
@@ -27,8 +30,7 @@ treatment group to the number of participants assigned to the control
 group. The function can be refined for normally and Bernoulli
 distributed data.
 
-No refinement
--------------
+### No refinement
 
 First, implement the six scenarios for normal data in Table 1 of
 Shardell and El-Kamary (2009) for two-sided tests with default sig.level
@@ -198,8 +200,7 @@ The results of the above calculations match the “Proposed” column for
 normally distributed data shown in Table 2 of Shardell and El-Kamary
 (2009).
 
-Normal refinement
------------------
+### Normal refinement
 
 Next, compare the calculations to those when using normal refinement:
 
@@ -366,8 +367,7 @@ Next, compare the calculations to those when using normal refinement:
 In the six scenarios considered, normal refinement led to negligible
 difference in the calculated required sample size.
 
-Bernoulli refinement
---------------------
+### Bernoulli refinement
 
 Lastly, implement the six scenarios for Bernoulli data in Table 1 of
 Shardell and El-Kamary (2009) for two-sided tests with default sig.level
@@ -541,7 +541,7 @@ Bernoulli distributed data shown in Table 2 of Shardell and El-Kamary
 (2009).
 
 Computing sample size with *external* pilot data
-================================================
+------------------------------------------------
 
 The function ss.noncomp.expilot() takes as arguments the estimated
 variances by treatment group and compliance subgroup proportions based
@@ -577,8 +577,7 @@ supplementary material of Shardell and El-Kamary (2009). By default, the
 sample size ratio between the two groups is presumed to equal that of
 the pilot study.
 
-Scenario 1
-----------
+### Scenario 1
 
     var.scenario.1 <- var.f(rho.a=0.25, rho.n=0.25, rho.cp=0.50, mu.c1=0.50, mu.c0=0, mu.a=0.5, mu.n=0, 
                       sigma.c0.sq=1.2, sigma.c1.sq=1.0, sigma.n.sq=1.2, sigma.a.sq=1.0)
@@ -635,8 +634,7 @@ Scenario 1
     ## NOTE:  n0 is number in *control* group
     ##  n1 is number in *treatment* group
 
-Scenario 2
-----------
+### Scenario 2
 
     var.scenario.2 <- var.f(rho.a=0.25, rho.n=0.25, rho.cp=0.50, mu.c1=0.50, mu.c0=0, mu.a=1.0, mu.n=-0.5, 
                       sigma.c0.sq=1.2, sigma.c1.sq=1.0, sigma.n.sq=1.2, sigma.a.sq=1.0)
@@ -693,8 +691,7 @@ Scenario 2
     ## NOTE:  n0 is number in *control* group
     ##  n1 is number in *treatment* group
 
-Scenario 3
-----------
+### Scenario 3
 
     var.scenario.3 <- var.f(rho.a=0.25, rho.n=0.25, rho.cp=0.50, mu.c1=0.50, mu.c0=0, mu.a=1.0, mu.n=-0.5, 
                       sigma.c0.sq=1.2, sigma.c1.sq=1.0, sigma.n.sq=1.4, sigma.a.sq=1.2)
@@ -751,8 +748,7 @@ Scenario 3
     ## NOTE:  n0 is number in *control* group
     ##  n1 is number in *treatment* group
 
-Scenario 4
-----------
+### Scenario 4
 
     var.scenario.4 <- var.f(rho.a=0.25, rho.n=0.25, rho.cp=0.50, mu.c1=0.50, mu.c0=0, mu.a=0.3, mu.n=0.2, 
                       sigma.c0.sq=1.2, sigma.c1.sq=1.0, sigma.n.sq=1.2, sigma.a.sq=1.0)
@@ -809,8 +805,7 @@ Scenario 4
     ## NOTE:  n0 is number in *control* group
     ##  n1 is number in *treatment* group
 
-Scenario 5
-----------
+### Scenario 5
 
     var.scenario.5 <- var.f(rho.a=0.25, rho.n=0.25, rho.cp=0.50, mu.c1=0.50, mu.c0=0, mu.a=1.5, mu.n=-1.0, 
                       sigma.c0.sq=1.2, sigma.c1.sq=1.0, sigma.n.sq=2.0, sigma.a.sq=2.0)
@@ -867,8 +862,7 @@ Scenario 5
     ## NOTE:  n0 is number in *control* group
     ##  n1 is number in *treatment* group
 
-Scenario 6
-----------
+### Scenario 6
 
     var.scenario.6 <- var.f(rho.a=0.25, rho.n=0.25, rho.cp=0.50, mu.c1=0.50, mu.c0=0, mu.a=0.3, mu.n=0.2, 
                       sigma.c0.sq=1.2, sigma.c1.sq=1.0, sigma.n.sq=0.6, sigma.a.sq=0.5)
@@ -926,7 +920,7 @@ Scenario 6
     ##  n1 is number in *treatment* group
 
 Computing sample size with *internal* pilot data
-================================================
+------------------------------------------------
 
 The function ss.noncomp.inpilot() takes the same arguments a the
 function ss.noncomp.expilot() decribed above, but additionally a
@@ -941,8 +935,7 @@ Equation (3) in the supplementary material of Shardell and El-Kamary
 (2009). In this function, the sample size ratio between the two groups
 in the pilot study is preserved.
 
-Scenario 1
-----------
+### Scenario 1
 
     var.scenario.1 <- var.f(rho.a=0.25, rho.n=0.25, rho.cp=0.50, mu.c1=0.50, mu.c0=0, mu.a=0.5, mu.n=0, 
                       sigma.c0.sq=1.2, sigma.c1.sq=1.0, sigma.n.sq=1.2, sigma.a.sq=1.0)
@@ -1001,8 +994,7 @@ Scenario 1
     ## NOTE:  n0 is number in *control* group (internal pilot plus second segment) 
     ##  n1 is number in *treatment* group (internal pilot plus second segment)
 
-Scenario 2
-----------
+### Scenario 2
 
     var.scenario.2 <- var.f(rho.a=0.25, rho.n=0.25, rho.cp=0.50, mu.c1=0.50, mu.c0=0, mu.a=1.0, mu.n=-0.5, 
                       sigma.c0.sq=1.2, sigma.c1.sq=1.0, sigma.n.sq=1.2, sigma.a.sq=1.0)
@@ -1061,8 +1053,7 @@ Scenario 2
     ## NOTE:  n0 is number in *control* group (internal pilot plus second segment) 
     ##  n1 is number in *treatment* group (internal pilot plus second segment)
 
-Scenario 3
-----------
+### Scenario 3
 
     var.scenario.3 <- var.f(rho.a=0.25, rho.n=0.25, rho.cp=0.50, mu.c1=0.50, mu.c0=0, mu.a=1.0, mu.n=-0.5, 
                       sigma.c0.sq=1.2, sigma.c1.sq=1.0, sigma.n.sq=1.4, sigma.a.sq=1.2)
@@ -1121,8 +1112,7 @@ Scenario 3
     ## NOTE:  n0 is number in *control* group (internal pilot plus second segment) 
     ##  n1 is number in *treatment* group (internal pilot plus second segment)
 
-Scenario 4
-----------
+### Scenario 4
 
     var.scenario.4 <- var.f(rho.a=0.25, rho.n=0.25, rho.cp=0.50, mu.c1=0.50, mu.c0=0, mu.a=0.3, mu.n=0.2, 
                       sigma.c0.sq=1.2, sigma.c1.sq=1.0, sigma.n.sq=1.2, sigma.a.sq=1.0)
@@ -1181,8 +1171,7 @@ Scenario 4
     ## NOTE:  n0 is number in *control* group (internal pilot plus second segment) 
     ##  n1 is number in *treatment* group (internal pilot plus second segment)
 
-Scenario 5
-----------
+### Scenario 5
 
     var.scenario.5 <- var.f(rho.a=0.25, rho.n=0.25, rho.cp=0.50, mu.c1=0.50, mu.c0=0, mu.a=1.5, mu.n=-1.0, 
                       sigma.c0.sq=1.2, sigma.c1.sq=1.0, sigma.n.sq=2.0, sigma.a.sq=2.0)
@@ -1241,8 +1230,7 @@ Scenario 5
     ## NOTE:  n0 is number in *control* group (internal pilot plus second segment) 
     ##  n1 is number in *treatment* group (internal pilot plus second segment)
 
-Scenario 6
-----------
+### Scenario 6
 
     var.scenario.6 <- var.f(rho.a=0.25, rho.n=0.25, rho.cp=0.50, mu.c1=0.50, mu.c0=0, mu.a=0.3, mu.n=0.2, 
                       sigma.c0.sq=1.2, sigma.c1.sq=1.0, sigma.n.sq=0.6, sigma.a.sq=0.5)
