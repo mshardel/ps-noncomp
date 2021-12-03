@@ -371,7 +371,7 @@ difference in the calculated required sample size.
 
 Lastly, implement the six scenarios for Bernoulli data in Table 1 of
 Shardell and El-Kamary (2009) for two-sided tests with default sig.level
-(0.05), power (0.8), and ss.ratio (1) and with Bernoulli refinement.
+(0.05), power (0.8), and ss.ratio (1), and with Bernoulli refinement.
 Variances are not required because they are computed based on the
 user-inputted means (proportions):
 
