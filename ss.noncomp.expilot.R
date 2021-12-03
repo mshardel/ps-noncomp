@@ -21,7 +21,7 @@ library(ssanv)
 ######################################################################################
 
 ss.noncomp.expilot <- function (delta = NULL, sigma.0p.sq = NULL, sigma.1p.sq = sigma.0p.sq, 
-                                rho.cp = NULL, n0.p = NULL, n1.p = n0.p,   
+                                rho.cp = NULL, n0.p = NULL, n1.p = n0.p, ss.ratio=(n1.p/n0.p),  
                                 sig.level = 0.05, power = 0.8, alternative = c("two.sided", 
                                                                                "one.sided"))
 {
@@ -51,9 +51,8 @@ ss.noncomp.expilot <- function (delta = NULL, sigma.0p.sq = NULL, sigma.1p.sq = 
     stop("delta.star cannot equal 0")
   }
   
-  #second segment ratio is the same as the first segment ratio
-  ss.ratio = n1.p/n0.p
-  
+ 
+ 
   #satterthwaite approximation 
   tau.p.sq <- (sigma.0p.sq/n0.p + sigma.1p.sq/n1.p)
   nu.p   <- ((tau.p.sq)^2)/(sigma.0p.sq^2/((n0.p - 1) * n0.p^2) + sigma.1p.sq^2/((n1.p - 
